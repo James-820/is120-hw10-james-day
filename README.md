@@ -1,2 +1,1 @@
-# is120-hw10-james-day
-HW10 of IS 120
+# HW10 - James Day
