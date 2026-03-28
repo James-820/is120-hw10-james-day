@@ -15,7 +15,7 @@ h1 {
 }
 
 .card-container {
-  background-color: lightblue;
+  /* background-color: lightblue; */
 
   display: flex;
   justify-content: space-evenly;
@@ -23,7 +23,7 @@ h1 {
 }
 
 .card {
-  background-color: lightgray;
+  /* background-color: lightgray; */
   padding: 2rem;
   border-radius: 1rem;
 
@@ -32,6 +32,32 @@ h1 {
   justify-content: space-evenly;
   align-items: center;
   gap: 2rem;
+
+  font-weight: bold;
+}
+
+.temp {
+  font-size: 2rem;
+}
+
+.temp-group {
+  font-size: 1.5rem;
+}
+
+.Cold {
+  background-image: linear-gradient(to top right, #5895f7, #aff5fa);
+}
+
+.Mild {
+  background-image: linear-gradient(
+    to top right,
+    lightgreen,
+    rgb(210, 246, 205)
+  );
+}
+
+.Hot {
+  background-image: linear-gradient(to top right, #fd8443, #ecf983);
 }
 
 /* .card::after {

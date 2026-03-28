@@ -52,6 +52,17 @@ for (let i = 0; i < temps.length; i++) {
   let card = document.createElement("div");
   card.classList = "card";
   //   card.id = temps[i];
+  // Assign background color:
+  // if (tempGroup === "Cold") {
+  //   card.style.backgroundColor = "blue";
+  // } else if (tempGroup === "Mild") {
+  //   card.style.backgroundColor = "white";
+  // } else {
+  //   card.style.backgroundColor = "red";
+  // }
+  card.classList += " " + tempGroup;
+  // Assign the text content and append to DOM:
+  container.appendChild(card);
   // Span 1:
   let span1 = document.createElement("span");
   span1.classList = "date";
@@ -67,14 +78,4 @@ for (let i = 0; i < temps.length; i++) {
   span3.classList = "temp-group";
   span3.textContent = tempGroup;
   card.appendChild(span3);
-  // Assign background color:
-  if (tempGroup === "Cold") {
-    card.backgroundColor = "blue";
-  } else if (tempGroup === "Mild") {
-    card.backgroundColor = "white";
-  } else {
-    card.backgroundColor = "red";
-  }
-  // Assign the text content and append to DOM:
-  container.appendChild(card);
 }
