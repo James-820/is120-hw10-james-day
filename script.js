@@ -14,6 +14,7 @@ const MONTHS = [
   "November",
   "December",
 ];
+const MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const TEMPS_LENGTH = 5;
 const MIN_TEMP = 0;
 const MAX_TEMP = 100;
@@ -24,26 +25,44 @@ const MILD_MAX = 70;
 // Get elements from DOM as global variables:
 // ==================================================
 let container = document.querySelector(".card-container");
-// Current date:
-const currentDate = new Date();
 
 // Array of temperatures:
 // Start hardcoded:
-let temps = [20, 40, 60, 80, 100];
+// let temps = [20, 40, 60, 80, 100];
 // Generate random temperatures:
+let temps = [];
+for (let i = 0; i < TEMPS_LENGTH; i++) {
+  let rand = Math.floor(Math.random() * (MAX_TEMP - MIN_TEMP + 1) + MIN_TEMP);
+  temps.push(rand);
+}
 
 // Render cards to the DOM:
 // ==================================================
+// Current date:
+const currentDate = new Date();
+let j = 1;
 for (let i = 0; i < temps.length; i++) {
   // Get a date in a readable format:
-  let date =
-    currentDate.getDate() +
-    i +
-    " of " +
-    MONTHS[currentDate.getMonth()] +
-    ", " +
-    currentDate.getFullYear() +
-    "\n";
+  let date;
+  // This is for fixing problems like "32 of March":
+  if (currentDate.getDate() + i > MONTH_DAYS[currentDate.getMonth()]) {
+    // Go to next month and start from 0:
+    date =
+      j +
+      " of " +
+      MONTHS[currentDate.getMonth() < 11 ? currentDate.getMonth() + 1 : 0] +
+      ", " +
+      currentDate.getFullYear();
+    j++;
+  } else {
+    date =
+      currentDate.getDate() +
+      i +
+      " of " +
+      MONTHS[currentDate.getMonth()] +
+      ", " +
+      currentDate.getFullYear();
+  }
   // Assign cold, mild, or hot:
   let tempGroup =
     temps[i] <= COLD_MAX ? "Cold" : temps[i] <= MILD_MAX ? "Mild" : "Hot";
@@ -51,15 +70,6 @@ for (let i = 0; i < temps.length; i++) {
   // Card:
   let card = document.createElement("div");
   card.classList = "card";
-  //   card.id = temps[i];
-  // Assign background color:
-  // if (tempGroup === "Cold") {
-  //   card.style.backgroundColor = "blue";
-  // } else if (tempGroup === "Mild") {
-  //   card.style.backgroundColor = "white";
-  // } else {
-  //   card.style.backgroundColor = "red";
-  // }
   card.classList += " " + tempGroup;
   // Assign the text content and append to DOM:
   container.appendChild(card);

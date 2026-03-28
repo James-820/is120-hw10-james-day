@@ -1,1 +1,7 @@
 # HW10 - James Day
+
+For this project, I used a couple of the same type of "for" loops. Since the syntax `for (let i = 0; i < num; i++)` is almost the same as C++, it's made a lot of sense to me, and I just feel more in control because I can get the index number whenever I need, so that's what I used both times. It ended up being a good thing because I did use the index number in my code.
+
+I think having a number of days that isn't hardcoded is good so that (eventually) the user could choose how many days in advance they want the forecast to show. The way I did that was having a global variable that contains the length of the array of random temperatures that get generated. For now, to add more, I have to go in manually to change that variable, but later I could add an input to let the user choose the number of days displayed.
+
+There's a tie for the most difficult problem, and that's between getting the linear gradient to work and avoiding invalid dates like "32 of March". For the first one, it was just me not reading the W3 Schools documentation correctly. At first I tried to insert the gradient directly through JS, but when it didn't work, I just added to the `classList` attribute and styled the classes accordingly. For the dates, I added an extra `if` statement to check to see if the date was valid. I also had to add an array containing the number of days for each month for comparison.
